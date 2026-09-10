@@ -1,0 +1,17 @@
+# PlantPal - فایل‌های نادیده گرفته شده
+
+# پوشه‌های سیستمی
+.DS_Store
+Thumbs.db
+
+# پوشه‌های ویرایشگر
+.vscode/
+.idea/
+
+# فایل‌های موقت
+*.log
+*.tmp
+
+# پوشه‌های پشتیبان
+backup/
+node_modules/
