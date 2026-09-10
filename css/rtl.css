@@ -1,0 +1,20 @@
+/* PlantPal - استایل راست‌به‌چپ (فارسی) */
+
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .app-header,
+html[dir="rtl"] .welcome,
+html[dir="rtl"] .app-footer {
+  text-align: center;
+}
+
+/* جلوگیری از به‌هم‌ریختگی متن‌های ترکیبی */
+html[dir="rtl"] p,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  unicode-bidi: plaintext;
+}س
