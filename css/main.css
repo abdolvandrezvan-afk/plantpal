@@ -8,25 +8,53 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary: #2e7d32;
+  --color-primary-dark: #1b5e20;
+  --color-primary-light: #66bb6a;
+  --color-primary-bg: #e8f5e9;
+  --color-warning: #fb8c00;
+  --color-warning-dark: #e65100;
+  --color-warning-bg: #fff3e0;
+  --color-danger: #e53935;
+  --color-danger-dark: #c62828;
+  --color-danger-bg: #ffebee;
+  --color-text: #333333;
+  --color-text-light: #777777;
+  --color-bg: #f5f9f5;
+  --color-white: #ffffff;
+  --color-border: #e0e0e0;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --transition: all 0.2s ease;
+}
+
 body {
-  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  font-family: 'Vazirmatn', 'Tahoma', 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-  color: #2e7d32;
+  background-attachment: fixed;
+  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ============================================
-   هدر
-   ============================================ */
-
 .app-header {
-  background: #2e7d32;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   color: white;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .app-header-content {
@@ -36,17 +64,16 @@ body {
 
 .app-title {
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
 }
 
 .app-subtitle {
   font-size: 1rem;
-  opacity: 0.9;
+  font-weight: 400;
+  opacity: 0.95;
 }
-
-/* ============================================
-   بخش اصلی
-   ============================================ */
 
 .app-main {
   flex: 1;
@@ -56,10 +83,6 @@ body {
   width: 100%;
 }
 
-/* ============================================
-   فوتر
-   ============================================ */
-
 .app-footer {
   background: #1b5e20;
   color: white;
@@ -68,24 +91,9 @@ body {
   font-size: 0.9rem;
 }
 
-/* ============================================
-   واکنش‌گرا (Responsive)
-   ============================================ */
-
 @media (max-width: 600px) {
-  .app-header {
-    padding: 1rem;
-  }
-
-  .app-title {
-    font-size: 1.5rem;
-  }
-
-  .app-subtitle {
-    font-size: 0.85rem;
-  }
-
-  .app-main {
-    padding: 1rem;
-  }
+  .app-header { padding: 1.2rem 1rem; }
+  .app-title { font-size: 1.5rem; }
+  .app-subtitle { font-size: 0.85rem; }
+  .app-main { padding: 1rem; }
 }

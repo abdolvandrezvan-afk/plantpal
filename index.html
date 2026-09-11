@@ -3,32 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PlantPal — برنامه مراقبت از گیاهان">
   <title>PlantPal | گیاه‌یار</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/rtl.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
-  <header class="app-header">
+  <header class="app-header" role="banner">
     <div class="app-header-content">
       <h1 class="app-title">🌱 PlantPal</h1>
       <p class="app-subtitle">گیاه‌یار — همراه شما در مراقبت از گیاهان</p>
     </div>
   </header>
 
-  <main class="app-main">
+  <main class="app-main" role="main">
 
-    <section id="page-home" class="page active">
+    <section id="page-home" class="page active" aria-label="صفحه اصلی">
 
       <div class="page-header">
         <h2 class="page-title">گیاهان من</h2>
-        <button id="btn-add-plant" class="btn btn-primary">
+        <button id="btn-add-plant" class="btn btn-primary" aria-label="افزودن گیاه جدید">
           + افزودن گیاه
         </button>
       </div>
 
-      <div id="today-tasks" class="today-tasks" style="display: none;">
+      <div id="today-tasks" class="today-tasks" style="display: none;" aria-live="polite">
         <h3 class="today-tasks-title">📋 کارهای امروز</h3>
         <div id="today-tasks-list" class="today-tasks-list"></div>
       </div>
@@ -38,23 +44,23 @@
         <div id="plants-list" class="plants-list"></div>
       </div>
 
-      <div id="empty-state" class="empty-state" style="display: none;">
+      <div id="empty-state" class="empty-state" style="display: none;" role="status">
         <p>هنوز گیاهی ثبت نکرده‌اید.</p>
         <p>برای شروع، روی «افزودن گیاه» کلیک کنید.</p>
       </div>
 
     </section>
 
-    <section id="page-add" class="page">
+    <section id="page-add" class="page" aria-label="افزودن گیاه">
       <div class="page-header">
-        <button id="btn-back-from-add" class="btn btn-back">← بازگشت</button>
+        <button id="btn-back-from-add" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">← بازگشت</button>
         <h2 class="page-title">افزودن گیاه جدید</h2>
       </div>
 
-      <form id="form-add-plant" class="plant-form">
+      <form id="form-add-plant" class="plant-form" aria-label="فرم افزودن گیاه">
         <div class="form-group">
           <label for="add-name" class="form-label">نام گیاه *</label>
-          <input type="text" id="add-name" class="form-input" required>
+          <input type="text" id="add-name" class="form-input" required aria-required="true">
         </div>
 
         <div class="form-group">
@@ -84,9 +90,9 @@
       </form>
     </section>
 
-    <section id="page-details" class="page">
+    <section id="page-details" class="page" aria-label="جزئیات گیاه">
       <div class="page-header">
-        <button id="btn-back-from-details" class="btn btn-back">← بازگشت</button>
+        <button id="btn-back-from-details" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">← بازگشت</button>
         <h2 class="page-title">جزئیات گیاه</h2>
       </div>
 
@@ -116,15 +122,15 @@
       </div>
 
       <div class="plant-details-actions">
-        <button id="btn-edit-plant" class="btn btn-secondary">ویرایش</button>
-        <button id="btn-delete-plant" class="btn btn-danger">حذف</button>
+        <button id="btn-edit-plant" class="btn btn-secondary" aria-label="ویرایش گیاه">ویرایش</button>
+        <button id="btn-delete-plant" class="btn btn-danger" aria-label="حذف گیاه">حذف</button>
       </div>
 
       <div class="care-history">
         <h3 class="care-history-title">تاریخچه آبیاری</h3>
-        <button id="btn-add-care" class="btn btn-primary">+ ثبت آبیاری جدید</button>
-        <div id="care-logs-list" class="care-logs-list"></div>
-        <div id="empty-care-logs" class="empty-state" style="display: none;">
+        <button id="btn-add-care" class="btn btn-primary" aria-label="ثبت آبیاری جدید">+ ثبت آبیاری جدید</button>
+        <div id="care-logs-list" class="care-logs-list" aria-live="polite"></div>
+        <div id="empty-care-logs" class="empty-state" style="display: none;" role="status">
           <p>هنوز آبیاری ثبت نشده است.</p>
         </div>
       </div>
@@ -132,11 +138,11 @@
 
   </main>
 
-  <div id="modal-add-care" class="modal">
+  <div id="modal-add-care" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-care-title">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">ثبت آبیاری جدید</h3>
-        <button id="btn-close-care-modal" class="modal-close">×</button>
+        <h3 id="modal-care-title" class="modal-title">ثبت آبیاری جدید</h3>
+        <button id="btn-close-care-modal" class="modal-close" aria-label="بستن">×</button>
       </div>
 
       <form id="form-add-care" class="modal-form">
@@ -158,7 +164,7 @@
     </div>
   </div>
 
-  <footer class="app-footer">
+  <footer class="app-footer" role="contentinfo">
     <p>نسخه ۰.۱.۰ — در حال ساخت</p>
   </footer>
 
