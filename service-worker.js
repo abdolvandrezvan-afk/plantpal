@@ -1,0 +1,65 @@
+// PlantPal - Service Worker
+// این فایل مسئول کش کردن فایل‌ها برای استفاده آفلاین است.
+
+const CACHE_NAME = 'plantpal-v1';
+
+const CACHE_FILES = [
+  './',
+  './index.html',
+  './manifest.json',
+  './css/main.css',
+  './css/rtl.css',
+  './css/components.css',
+  './js/database.js',
+  './js/i18n.js',
+  './js/ui.js',
+  './js/plants.js',
+  './js/care.js',
+  './js/dashboard.js',
+  './js/app.js',
+  './assets/images/default-plant.png',
+  './assets/icons/icon-512.png'
+];
+
+self.addEventListener('install', function(event) {
+  console.log('✓ Service Worker در حال نصب...');
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      console.log('✓ فایل‌ها کش شدند');
+      return cache.addAll(CACHE_FILES);
+    })
+  );
+
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', function(event) {
+  console.log('✓ Service Worker فعال شد');
+
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheName !== CACHE_NAME) {
+            console.log('✓ کش قدیمی حذف شد:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
+    })
+  );
+});

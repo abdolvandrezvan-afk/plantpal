@@ -66,7 +66,7 @@ PlantPal/
 
 ```text
 # PlantPal - فایل‌های نادیده گرفته شده
-
+س
 # پوشه‌های سیستمی
 .DS_Store
 Thumbs.db

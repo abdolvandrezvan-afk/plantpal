@@ -1,0 +1,20 @@
+{
+  "name": "PlantPal | گیاه‌یار",
+  "short_name": "PlantPal",
+  "description": "برنامه مراقبت و نگهداری از گیاهان",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e8f5e9",
+  "theme_color": "#2e7d32",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
