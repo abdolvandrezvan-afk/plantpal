@@ -106,7 +106,6 @@ async function openPlantDetails(plantId) {
 
     showDetailsPage();
 
-    // نمایش تاریخچه آبیاری
     await renderCareLogs(plantId);
 
     console.log('✓ جزئیات گیاه نمایش داده شد:', plant.name);
@@ -153,7 +152,7 @@ async function handleAddPlant(event) {
 
     clearAddForm();
     showHomePage();
-    await renderPlantsList();
+    await renderDashboard();
 
   } catch (error) {
     console.error('✗ خطا در افزودن گیاه:', error);
@@ -269,7 +268,7 @@ async function handleDeletePlant() {
 
     currentPlantId = null;
     showHomePage();
-    await renderPlantsList();
+    await renderDashboard();
 
   } catch (error) {
     console.error('✗ خطا در حذف گیاه:', error);

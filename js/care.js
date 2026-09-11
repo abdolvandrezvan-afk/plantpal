@@ -72,7 +72,12 @@ async function handleAddCare(event) {
     console.log('✓ آبیاری ثبت شد');
 
     closeAddCareModal();
+
+    // به‌روزرسانی تاریخچه صفحه جزئیات
     await renderCareLogs(currentCarePlantId);
+
+    // به‌روزرسانی داشبورد (صفحه اصلی)
+    await renderDashboard();
 
   } catch (error) {
     console.error('✗ خطا در ثبت آبیاری:', error);
@@ -136,7 +141,6 @@ function createCareLogItem(log) {
     info.appendChild(note);
   }
 
-  // دکمه حذف
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'care-log-delete';
   deleteBtn.textContent = '×';
@@ -168,6 +172,9 @@ async function handleDeleteCareLog(logId) {
 
     // به‌روزرسانی تاریخچه
     await renderCareLogs(currentCarePlantId);
+
+    // به‌روزرسانی داشبورد
+    await renderDashboard();
 
   } catch (error) {
     console.error('✗ خطا در حذف آبیاری:', error);

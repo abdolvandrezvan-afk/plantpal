@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     translatePage();
 
-    await renderPlantsList();
+    await renderDashboard();
 
     setupEventListeners();
 
@@ -38,7 +38,7 @@ function setupEventListeners() {
   if (btnBackFromAdd) {
     btnBackFromAdd.addEventListener('click', function() {
       showHomePage();
-      renderPlantsList();
+      renderDashboard();
     });
   }
 
@@ -46,7 +46,7 @@ function setupEventListeners() {
   if (btnCancelAdd) {
     btnCancelAdd.addEventListener('click', function() {
       showHomePage();
-      renderPlantsList();
+      renderDashboard();
     });
   }
 
@@ -65,7 +65,7 @@ function setupEventListeners() {
   if (btnBackFromDetails) {
     btnBackFromDetails.addEventListener('click', function() {
       showHomePage();
-      renderPlantsList();
+      renderDashboard();
     });
   }
 
@@ -79,7 +79,6 @@ function setupEventListeners() {
     btnDeletePlant.addEventListener('click', handleDeletePlant);
   }
 
-  // رویدادهای Modal ثبت آبیاری
   const btnAddCare = document.getElementById('btn-add-care');
   if (btnAddCare) {
     btnAddCare.addEventListener('click', openAddCareModal);

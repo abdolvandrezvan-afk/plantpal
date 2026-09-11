@@ -20,6 +20,7 @@
   <main class="app-main">
 
     <section id="page-home" class="page active">
+
       <div class="page-header">
         <h2 class="page-title">گیاهان من</h2>
         <button id="btn-add-plant" class="btn btn-primary">
@@ -27,12 +28,21 @@
         </button>
       </div>
 
-      <div id="plants-list" class="plants-list"></div>
+      <div id="today-tasks" class="today-tasks" style="display: none;">
+        <h3 class="today-tasks-title">📋 کارهای امروز</h3>
+        <div id="today-tasks-list" class="today-tasks-list"></div>
+      </div>
+
+      <div id="healthy-plants-section" class="plants-section" style="display: none;">
+        <h3 class="plants-section-title">🌱 گیاهان من</h3>
+        <div id="plants-list" class="plants-list"></div>
+      </div>
 
       <div id="empty-state" class="empty-state" style="display: none;">
         <p>هنوز گیاهی ثبت نکرده‌اید.</p>
         <p>برای شروع، روی «افزودن گیاه» کلیک کنید.</p>
       </div>
+
     </section>
 
     <section id="page-add" class="page">
@@ -157,6 +167,7 @@
   <script src="js/ui.js"></script>
   <script src="js/plants.js"></script>
   <script src="js/care.js"></script>
+  <script src="js/dashboard.js"></script>
   <script src="js/app.js"></script>
 
 </body>
