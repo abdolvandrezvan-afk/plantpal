@@ -23,6 +23,7 @@ function openAddCareModal() {
   if (dateInput) {
     const today = new Date().toISOString().split('T')[0];
     dateInput.value = today;
+    dateInput.max = today;
   }
 
   const noteInput = document.getElementById('care-note');
@@ -73,10 +74,7 @@ async function handleAddCare(event) {
 
     closeAddCareModal();
 
-    // به‌روزرسانی تاریخچه صفحه جزئیات
     await renderCareLogs(currentCarePlantId);
-
-    // به‌روزرسانی داشبورد (صفحه اصلی)
     await renderDashboard();
 
   } catch (error) {
@@ -170,10 +168,7 @@ async function handleDeleteCareLog(logId) {
     await deleteCareLog(logId);
     console.log('✓ آبیاری حذف شد. شناسه:', logId);
 
-    // به‌روزرسانی تاریخچه
     await renderCareLogs(currentCarePlantId);
-
-    // به‌روزرسانی داشبورد
     await renderDashboard();
 
   } catch (error) {
