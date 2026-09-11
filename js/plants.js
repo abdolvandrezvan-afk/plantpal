@@ -39,13 +39,11 @@ async function renderPlantsList() {
   }
 }
 
-// ساخت یک کارت گیاه
 function createPlantCard(plant) {
   const card = document.createElement('div');
   card.className = 'plant-card';
   card.setAttribute('data-plant-id', plant.id);
 
-  // تصویر
   const image = document.createElement('img');
   image.className = 'plant-card-image';
   image.alt = plant.name;
@@ -55,7 +53,6 @@ function createPlantCard(plant) {
     image.src = 'assets/images/default-plant.png';
   }
 
-  // محتوا
   const content = document.createElement('div');
   content.className = 'plant-card-content';
 
@@ -73,7 +70,6 @@ function createPlantCard(plant) {
   card.appendChild(image);
   card.appendChild(content);
 
-  // کلیک روی کارت → صفحه جزئیات
   card.addEventListener('click', function() {
     openPlantDetails(plant.id);
   });
@@ -96,13 +92,11 @@ async function openPlantDetails(plantId) {
 
     currentPlantId = plantId;
 
-    // پر کردن اطلاعات
     document.getElementById('details-name').textContent = plant.name || '—';
     document.getElementById('details-type').textContent = plant.type || '—';
     document.getElementById('details-location').textContent = plant.location || '—';
     document.getElementById('details-notes').textContent = plant.notes || '—';
 
-    // تصویر
     const detailsImage = document.getElementById('details-image');
     if (plant.image) {
       detailsImage.src = plant.image;
@@ -110,8 +104,10 @@ async function openPlantDetails(plantId) {
       detailsImage.src = 'assets/images/default-plant.png';
     }
 
-    // رفتن به صفحه جزئیات
     showDetailsPage();
+
+    // نمایش تاریخچه آبیاری
+    await renderCareLogs(plantId);
 
     console.log('✓ جزئیات گیاه نمایش داده شد:', plant.name);
   } catch (error) {
@@ -139,13 +135,11 @@ async function handleAddPlant(event) {
     const notes = document.getElementById('add-notes').value.trim();
     const imageInput = document.getElementById('add-image');
 
-    // اگر تصویر انتخاب شده بود، تبدیل به Base64 کن
     let imageData = null;
     if (imageInput.files && imageInput.files[0]) {
       imageData = await fileToBase64(imageInput.files[0]);
     }
 
-    // ذخیره گیاه
     const plantData = {
       name: name,
       type: type,
@@ -157,13 +151,8 @@ async function handleAddPlant(event) {
     await savePlant(plantData);
     console.log('✓ گیاه با موفقیت اضافه شد');
 
-    // پاک کردن فرم
     clearAddForm();
-
-    // بازگشت به صفحه اصلی
     showHomePage();
-
-    // به‌روزرسانی فهرست
     await renderPlantsList();
 
   } catch (error) {
@@ -172,7 +161,6 @@ async function handleAddPlant(event) {
   }
 }
 
-// تبدیل فایل به Base64
 function fileToBase64(file) {
   return new Promise(function(resolve, reject) {
     const reader = new FileReader();
@@ -202,14 +190,11 @@ function handleEditPlant() {
       return;
     }
 
-    // پر کردن فرم
     fillAddForm(plant);
 
-    // تغییر حالت به ویرایش
     isEditMode = true;
     editingPlantId = currentPlantId;
 
-    // رفتن به صفحه افزودن
     showAddPage();
 
     console.log('✓ حالت ویرایش فعال شد برای:', plant.name);
@@ -273,7 +258,6 @@ async function handleDeletePlant() {
     return;
   }
 
-  // تأیید از کاربر
   const confirmed = confirm(t('confirmDelete'));
   if (!confirmed) {
     return;
@@ -283,11 +267,8 @@ async function handleDeletePlant() {
     await deletePlant(currentPlantId);
     console.log('✓ گیاه حذف شد');
 
-    // بازگشت به صفحه اصلی
     currentPlantId = null;
     showHomePage();
-
-    // به‌روزرسانی فهرست
     await renderPlantsList();
 
   } catch (error) {

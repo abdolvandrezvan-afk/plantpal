@@ -7,17 +7,13 @@ document.addEventListener('DOMContentLoaded', async function() {
   console.log('✓ صفحه بارگذاری شد');
 
   try {
-    // ۱. باز کردن پایگاه داده
     await openDatabase();
     console.log('✓ پایگاه داده آماده است');
 
-    // ۲. ترجمه صفحه
     translatePage();
 
-    // ۳. نمایش فهرست گیاهان
     await renderPlantsList();
 
-    // ۴. وصل کردن رویدادها
     setupEventListeners();
 
     console.log('✓ PlantPal با موفقیت راه‌اندازی شد');
@@ -27,12 +23,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   }
 });
 
-// ============================================
-// اتصال رویدادها
-// ============================================
-
 function setupEventListeners() {
-  // دکمه «افزودن گیاه» در صفحه اصلی
   const btnAddPlant = document.getElementById('btn-add-plant');
   if (btnAddPlant) {
     btnAddPlant.addEventListener('click', function() {
@@ -43,7 +34,6 @@ function setupEventListeners() {
     });
   }
 
-  // دکمه «بازگشت» از صفحه افزودن
   const btnBackFromAdd = document.getElementById('btn-back-from-add');
   if (btnBackFromAdd) {
     btnBackFromAdd.addEventListener('click', function() {
@@ -52,7 +42,6 @@ function setupEventListeners() {
     });
   }
 
-  // دکمه «انصراف» از فرم افزودن
   const btnCancelAdd = document.getElementById('btn-cancel-add');
   if (btnCancelAdd) {
     btnCancelAdd.addEventListener('click', function() {
@@ -61,7 +50,6 @@ function setupEventListeners() {
     });
   }
 
-  // فرم افزودن گیاه
   const formAddPlant = document.getElementById('form-add-plant');
   if (formAddPlant) {
     formAddPlant.addEventListener('submit', function(event) {
@@ -73,7 +61,6 @@ function setupEventListeners() {
     });
   }
 
-  // دکمه «بازگشت» از صفحه جزئیات
   const btnBackFromDetails = document.getElementById('btn-back-from-details');
   if (btnBackFromDetails) {
     btnBackFromDetails.addEventListener('click', function() {
@@ -82,16 +69,35 @@ function setupEventListeners() {
     });
   }
 
-  // دکمه «ویرایش» در صفحه جزئیات
   const btnEditPlant = document.getElementById('btn-edit-plant');
   if (btnEditPlant) {
     btnEditPlant.addEventListener('click', handleEditPlant);
   }
 
-  // دکمه «حذف» در صفحه جزئیات
   const btnDeletePlant = document.getElementById('btn-delete-plant');
   if (btnDeletePlant) {
     btnDeletePlant.addEventListener('click', handleDeletePlant);
+  }
+
+  // رویدادهای Modal ثبت آبیاری
+  const btnAddCare = document.getElementById('btn-add-care');
+  if (btnAddCare) {
+    btnAddCare.addEventListener('click', openAddCareModal);
+  }
+
+  const btnCloseCareModal = document.getElementById('btn-close-care-modal');
+  if (btnCloseCareModal) {
+    btnCloseCareModal.addEventListener('click', closeAddCareModal);
+  }
+
+  const btnCancelCare = document.getElementById('btn-cancel-care');
+  if (btnCancelCare) {
+    btnCancelCare.addEventListener('click', closeAddCareModal);
+  }
+
+  const formAddCare = document.getElementById('form-add-care');
+  if (formAddCare) {
+    formAddCare.addEventListener('submit', handleAddCare);
   }
 
   console.log('✓ رویدادها وصل شدند');

@@ -10,9 +10,6 @@
 </head>
 <body>
 
-  <!-- ============================================
-       هدر مشترک
-       ============================================ -->
   <header class="app-header">
     <div class="app-header-content">
       <h1 class="app-title">🌱 PlantPal</h1>
@@ -20,14 +17,8 @@
     </div>
   </header>
 
-  <!-- ============================================
-       بخش اصلی — شامل سه صفحه
-       ============================================ -->
   <main class="app-main">
 
-    <!-- ============================================
-         صفحه اصلی (Home)
-         ============================================ -->
     <section id="page-home" class="page active">
       <div class="page-header">
         <h2 class="page-title">گیاهان من</h2>
@@ -36,9 +27,7 @@
         </button>
       </div>
 
-      <div id="plants-list" class="plants-list">
-        <!-- گیاهان با JavaScript اینجا اضافه می‌شوند -->
-      </div>
+      <div id="plants-list" class="plants-list"></div>
 
       <div id="empty-state" class="empty-state" style="display: none;">
         <p>هنوز گیاهی ثبت نکرده‌اید.</p>
@@ -46,9 +35,6 @@
       </div>
     </section>
 
-    <!-- ============================================
-         صفحه افزودن گیاه (Add)
-         ============================================ -->
     <section id="page-add" class="page">
       <div class="page-header">
         <button id="btn-back-from-add" class="btn btn-back">← بازگشت</button>
@@ -88,9 +74,6 @@
       </form>
     </section>
 
-    <!-- ============================================
-         صفحه جزئیات گیاه (Details)
-         ============================================ -->
     <section id="page-details" class="page">
       <div class="page-header">
         <button id="btn-back-from-details" class="btn btn-back">← بازگشت</button>
@@ -130,9 +113,7 @@
       <div class="care-history">
         <h3 class="care-history-title">تاریخچه آبیاری</h3>
         <button id="btn-add-care" class="btn btn-primary">+ ثبت آبیاری جدید</button>
-        <div id="care-logs-list" class="care-logs-list">
-          <!-- تاریخچه با JavaScript اینجا اضافه می‌شود -->
-        </div>
+        <div id="care-logs-list" class="care-logs-list"></div>
         <div id="empty-care-logs" class="empty-state" style="display: none;">
           <p>هنوز آبیاری ثبت نشده است.</p>
         </div>
@@ -141,20 +122,41 @@
 
   </main>
 
-  <!-- ============================================
-       فوتر مشترک
-       ============================================ -->
+  <div id="modal-add-care" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">ثبت آبیاری جدید</h3>
+        <button id="btn-close-care-modal" class="modal-close">×</button>
+      </div>
+
+      <form id="form-add-care" class="modal-form">
+        <div class="form-group">
+          <label for="care-date" class="form-label">تاریخ</label>
+          <input type="date" id="care-date" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="care-note" class="form-label">یادداشت (اختیاری)</label>
+          <textarea id="care-note" class="form-textarea" rows="3"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">ذخیره</button>
+          <button type="button" id="btn-cancel-care" class="btn btn-secondary">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <footer class="app-footer">
     <p>نسخه ۰.۱.۰ — در حال ساخت</p>
   </footer>
 
-  <!-- ============================================
-       فایل‌های JavaScript
-       ============================================ -->
   <script src="js/database.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/plants.js"></script>
+  <script src="js/care.js"></script>
   <script src="js/app.js"></script>
 
 </body>
