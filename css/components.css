@@ -1,0 +1,369 @@
+/* ============================================
+   PlantPal - استایل کامپوننت‌ها
+   کارت، دکمه، فرم، پیام
+   ============================================ */
+
+/* ============================================
+   صفحه‌ها (SPA)
+   ============================================ */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ============================================
+   هدر صفحه
+   ============================================ */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ============================================
+   دکمه‌ها
+   ============================================ */
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1b5e20;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #d0d0d0;
+}
+
+.btn-danger {
+  background: #e53935;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c62828;
+}
+
+.btn-back {
+  background: transparent;
+  color: #2e7d32;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+}
+
+.btn-back:hover {
+  background: #e8f5e9;
+  box-shadow: none;
+}
+
+/* ============================================
+   فرم‌ها
+   ============================================ */
+
+.plant-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   فهرست گیاهان
+   ============================================ */
+
+.plants-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.plant-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.plant-card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #e8f5e9;
+}
+
+.plant-card-content {
+  padding: 1rem;
+}
+
+.plant-card-name {
+  color: #2e7d32;
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.plant-card-location {
+  color: #777;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ============================================
+   صفحه جزئیات گیاه
+   ============================================ */
+
+.plant-details {
+  display: flex;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.plant-details-image {
+  flex: 0 0 200px;
+}
+
+.plant-details-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #e8f5e9;
+}
+
+.plant-details-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.plant-info-row {
+  display: flex;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+}
+
+.plant-info-row:last-child {
+  border-bottom: none;
+}
+
+.plant-info-label {
+  font-weight: bold;
+  color: #2e7d32;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.plant-info-value {
+  color: #333;
+  flex: 1;
+}
+
+/* ============================================
+   دکمه‌های جزئیات
+   ============================================ */
+
+.plant-details-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   تاریخچه مراقبت
+   ============================================ */
+
+.care-history {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.care-history-title {
+  color: #2e7d32;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.care-logs-list {
+  margin-top: 1rem;
+}
+
+.care-log-item {
+  padding: 0.8rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.care-log-item:last-child {
+  border-bottom: none;
+}
+
+.care-log-date {
+  color: #555;
+}
+
+/* ============================================
+   حالت خالی (Empty State)
+   ============================================ */
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #777;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state p {
+  margin: 0.5rem 0;
+}
+
+/* ============================================
+   واکنش‌گرا (Responsive)
+   ============================================ */
+
+@media (max-width: 600px) {
+  .plants-list {
+    grid-template-columns: 1fr;
+  }
+
+  .plant-card {
+    display: flex;
+    align-items: center;
+  }
+
+  .plant-card-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .plant-card-content {
+    padding: 0.8rem;
+  }
+
+  .plant-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .plant-details-image img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .plant-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: right;
+  }
+
+  .plant-info-label {
+    min-width: auto;
+    margin-bottom: 0.2rem;
+  }
+
+  .plant-details-actions {
+    justify-content: center;
+  }
+}
