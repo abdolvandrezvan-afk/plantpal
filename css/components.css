@@ -49,7 +49,7 @@
 }
 
 .btn:focus-visible {
-  outline: 3px solid rgba(46, 125, 50, 0.4);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -68,11 +68,11 @@
 .btn-primary:hover { background: var(--color-primary-dark); }
 
 .btn-secondary {
-  background: #e0e0e0;
+  background: var(--color-border);
   color: var(--color-text);
 }
 
-.btn-secondary:hover { background: #d0d0d0; }
+.btn-secondary:hover { background: var(--color-text-muted); }
 
 .btn-danger {
   background: var(--color-danger);
@@ -96,10 +96,11 @@
 
 /* فرم‌ها */
 .plant-form {
-  background: white;
+  background: var(--color-card);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  transition: background 0.3s ease;
 }
 
 .form-group { margin-bottom: 1.2rem; }
@@ -122,7 +123,8 @@
   font-size: 1rem;
   box-sizing: border-box;
   transition: var(--transition);
-  background: white;
+  background: var(--color-card);
+  color: var(--color-text);
 }
 
 .form-input:focus,
@@ -151,7 +153,7 @@
 }
 
 .plant-card {
-  background: white;
+  background: var(--color-card);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -195,12 +197,13 @@
 .plant-details {
   display: flex;
   gap: 1.5rem;
-  background: white;
+  background: var(--color-card);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
+  transition: background 0.3s ease;
 }
 
 .plant-details-image { flex: 0 0 200px; }
@@ -221,7 +224,7 @@
 .plant-info-row {
   display: flex;
   padding: 0.7rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-light);
   align-items: flex-start;
 }
 
@@ -247,10 +250,11 @@
 
 /* تاریخچه مراقبت */
 .care-history {
-  background: white;
+  background: var(--color-card);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  transition: background 0.3s ease;
 }
 
 .care-history-title {
@@ -267,7 +271,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .care-log-item:last-child { border-bottom: none; }
@@ -316,9 +320,11 @@
   text-align: center;
   padding: 3rem 1rem;
   color: var(--color-text-light);
-  background: white;
+  background: var(--color-card);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  border: 2px dashed var(--color-border);
+  transition: background 0.3s ease;
 }
 
 .empty-state p { margin: 0.5rem 0; }
@@ -345,7 +351,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--color-card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   width: 100%;
@@ -353,6 +359,7 @@
   max-height: 90vh;
   overflow-y: auto;
   animation: modalSlideIn 0.3s ease;
+  color: var(--color-text);
 }
 
 @keyframes modalSlideIn {
@@ -365,7 +372,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .modal-title {
@@ -379,7 +386,7 @@
   background: transparent;
   border: none;
   font-size: 1.8rem;
-  color: #999;
+  color: var(--color-text-muted);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -392,7 +399,7 @@
 }
 
 .modal-close:hover {
-  background: #f0f0f0;
+  background: var(--color-border-light);
   color: var(--color-text);
 }
 
@@ -406,6 +413,7 @@
   padding: 1.2rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 8px rgba(251, 140, 0, 0.15);
+  transition: background 0.3s ease;
 }
 
 .today-tasks-title {
@@ -425,7 +433,7 @@
 }
 
 .today-task-item {
-  background: white;
+  background: var(--color-card);
   border-radius: var(--radius-sm);
   padding: 1rem;
   display: flex;
@@ -483,6 +491,98 @@
   gap: 0.5rem;
 }
 
+/* ============================================
+   صفحه تنظیمات
+   ============================================ */
+
+.settings-section {
+  background: var(--color-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.settings-section-title {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.settings-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.theme-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-align: right;
+  width: 100%;
+}
+
+.theme-option-btn:hover {
+  border-color: var(--color-primary-light);
+  transform: translateX(-4px);
+}
+
+.theme-option-btn.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.theme-option-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.theme-option-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.theme-option-label {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.theme-option-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.theme-option-check {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.theme-option-btn.active .theme-option-check {
+  opacity: 1;
+}
+
 /* واکنش‌گرا */
 @media (max-width: 600px) {
   .plants-list { grid-template-columns: 1fr; }
@@ -530,526 +630,10 @@
   }
 
   .today-task-actions { justify-content: flex-end; }
-}
-/* ============================================
-   بهبودهای جزئی
-   ============================================ */
 
-/* بهبود دکمه‌های کوچک در کارهای امروز */
-.today-task-actions .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-}
+  .settings-section { padding: 1rem; }
 
-/* بهبود دکمه حذف در تاریخچه */
-.care-log-delete:focus-visible {
-  outline: 2px solid var(--color-danger);
-  outline-offset: 2px;
-}
+  .theme-option-btn { padding: 0.8rem 1rem; }
 
-/* بهبود فرم در Modal */
-.modal-form .form-group:last-of-type {
-  margin-bottom: 0;
-}
-
-/* بهبود فهرست گیاهان در صفحه اصلی */
-.plants-section .plants-list {
-  margin-top: 0;
-}
-
-/* بهبود پیام خالی */
-.empty-state {
-  border: 2px dashed var(--color-border);
-}
-
-/* بهبود اسکرول‌بار */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary-light);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
-}
-
-/* بهبود انتخاب متن */
-::selection {
-  background: var(--color-primary-light);
-  color: white;
-}
-
-/* بهبود دکمه‌های غیرفعال */
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn:disabled:hover {
-  transform: none;
-  box-shadow: none;
-}
-/* ============================================
-   بهبود انیمیشن‌ها
-   ============================================ */
-
-/* انیمیشن ورود کارت‌ها */
-.plant-card {
-  animation: cardIn 0.4s ease backwards;
-}
-
-.plant-card:nth-child(1) { animation-delay: 0.05s; }
-.plant-card:nth-child(2) { animation-delay: 0.1s; }
-.plant-card:nth-child(3) { animation-delay: 0.15s; }
-.plant-card:nth-child(4) { animation-delay: 0.2s; }
-.plant-card:nth-child(5) { animation-delay: 0.25s; }
-.plant-card:nth-child(6) { animation-delay: 0.3s; }
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* انیمیشن ورود آیتم‌های کارهای امروز */
-.today-task-item {
-  animation: taskIn 0.4s ease backwards;
-}
-
-.today-task-item:nth-child(1) { animation-delay: 0.05s; }
-.today-task-item:nth-child(2) { animation-delay: 0.1s; }
-.today-task-item:nth-child(3) { animation-delay: 0.15s; }
-.today-task-item:nth-child(4) { animation-delay: 0.2s; }
-.today-task-item:nth-child(5) { animation-delay: 0.25s; }
-
-@keyframes taskIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* انیمیشن ورود آیتم‌های تاریخچه */
-.care-log-item {
-  animation: logIn 0.3s ease backwards;
-}
-
-.care-log-item:nth-child(1) { animation-delay: 0.05s; }
-.care-log-item:nth-child(2) { animation-delay: 0.1s; }
-.care-log-item:nth-child(3) { animation-delay: 0.15s; }
-.care-log-item:nth-child(4) { animation-delay: 0.2s; }
-.care-log-item:nth-child(5) { animation-delay: 0.25s; }
-
-@keyframes logIn {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* انیمیشن دکمه‌ها */
-.btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
-
-.btn:active::after {
-  width: 300px;
-  height: 300px;
-}
-
-/* انیمیشن ورود صفحه */
-.page.active {
-  animation: pageIn 0.4s ease;
-}
-
-@keyframes pageIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* انیمیشن هدر */
-.app-title {
-  display: inline-block;
-  animation: titleIn 0.6s ease;
-}
-
-@keyframes titleIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* انیمیشن Modal */
-.modal.active .modal-content {
-  animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: translateY(-40px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* انیمیشن دکمه حذف آبیاری */
-.care-log-delete {
-  transition: all 0.2s ease;
-}
-
-.care-log-delete:hover {
-  transform: scale(1.15) rotate(90deg);
-}
-
-/* انیمیشن آیکون‌ها */
-.today-tasks-title,
-.plants-section-title {
-  transition: transform 0.2s ease;
-}
-
-.today-tasks-title:hover,
-.plants-section-title:hover {
-  transform: translateX(-4px);
-}
-/* ============================================
-   بهبود Responsive
-   ============================================ */
-
-/* تبلت (600 تا 900 پیکسل) */
-@media (min-width: 601px) and (max-width: 900px) {
-  .plants-list {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-
-  .plant-card-image {
-    height: 140px;
-  }
-
-  .plant-details-image {
-    flex: 0 0 160px;
-  }
-
-  .plant-details-image img {
-    width: 160px;
-    height: 160px;
-  }
-}
-
-/* گوشی (کمتر از 600 پیکسل) */
-@media (max-width: 600px) {
-  /* صفحه اصلی */
-  .page-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.8rem;
-  }
-
-  .page-title {
-    font-size: 1.3rem;
-    text-align: center;
-  }
-
-  .page-header .btn {
-    width: 100%;
-  }
-
-  /* کارهای امروز */
-  .today-tasks {
-    padding: 1rem;
-  }
-
-  .today-tasks-title {
-    font-size: 1rem;
-  }
-
-  .today-task-item {
-    padding: 0.8rem;
-  }
-
-  .today-task-name {
-    font-size: 1rem;
-  }
-
-  .today-task-status {
-    font-size: 0.85rem;
-  }
-
-  .today-task-actions .btn {
-    width: 100%;
-  }
-
-  /* گیاهان */
-  .plant-card {
-    display: flex;
-    align-items: center;
-  }
-
-  .plant-card-image {
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0;
-  }
-
-  .plant-card-content {
-    padding: 0.8rem;
-    flex: 1;
-  }
-
-  .plant-card-name {
-    font-size: 1rem;
-  }
-
-  .plant-card-location {
-    font-size: 0.85rem;
-  }
-
-  /* صفحه جزئیات */
-  .plant-details {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .plant-details-image {
-    flex: none;
-  }
-
-  .plant-details-image img {
-    width: 140px;
-    height: 140px;
-  }
-
-  .plant-details-info {
-    width: 100%;
-    min-width: auto;
-  }
-
-  .plant-info-row {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: right;
-    padding: 0.5rem 0;
-  }
-
-  .plant-info-label {
-    min-width: auto;
-    margin-bottom: 0.2rem;
-    font-size: 0.9rem;
-  }
-
-  .plant-info-value {
-    font-size: 0.95rem;
-  }
-
-  /* دکمه‌های جزئیات */
-  .plant-details-actions {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .plant-details-actions .btn {
-    width: 100%;
-  }
-
-  /* تاریخچه */
-  .care-history {
-    padding: 1rem;
-  }
-
-  .care-history-title {
-    font-size: 1.1rem;
-  }
-
-  .care-history .btn {
-    width: 100%;
-  }
-
-  .care-log-item {
-    padding: 0.7rem;
-  }
-
-  .care-log-date {
-    font-size: 0.95rem;
-  }
-
-  .care-log-note {
-    font-size: 0.85rem;
-  }
-
-  /* Modal */
-  .modal-content {
-    max-width: 100%;
-    max-height: 95vh;
-    border-radius: var(--radius-md);
-  }
-
-  .modal-header {
-    padding: 1rem 1.2rem;
-  }
-
-  .modal-title {
-    font-size: 1.1rem;
-  }
-
-  .modal-form {
-    padding: 1.2rem;
-  }
-
-  /* فرم */
-  .form-actions {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .form-actions .btn {
-    width: 100%;
-  }
-
-  /* پیام خالی */
-  .empty-state {
-    padding: 2rem 1rem;
-  }
-
-  .empty-state p {
-    font-size: 0.9rem;
-  }
-
-  /* فوتر */
-  .app-footer {
-    font-size: 0.8rem;
-  }
-}
-
-/* گوشی خیلی کوچک (کمتر از 400 پیکسل) */
-@media (max-width: 400px) {
-  .app-title {
-    font-size: 1.3rem;
-  }
-
-  .app-subtitle {
-    font-size: 0.8rem;
-  }
-
-  .page-title {
-    font-size: 1.2rem;
-  }
-
-  .today-tasks-title,
-  .plants-section-title,
-  .care-history-title {
-    font-size: 1rem;
-  }
-
-  .plant-card-image {
-    width: 70px;
-    height: 70px;
-  }
-
-  .plant-details-image img {
-    width: 120px;
-    height: 120px;
-  }
-}
-/* ============================================
-   بهبود Accessibility
-   ============================================ */
-
-/* Focus برای همه عناصر تعاملی */
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-a:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Focus برای کارت گیاه */
-.plant-card:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* بهبود کنتراست متن در پیام خالی */
-.empty-state {
-  color: #555;
-}
-
-/* بهبود کنتراست دکمه‌های غیرفعال */
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* کاهش انیمیشن برای کاربرانی که نمی‌خواهند */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* بهبود خوانایی متن در Modal */
-.modal-content {
-  color: var(--color-text);
-}
-
-/* بهبود اندازه فونت‌های کوچک */
-.care-log-note,
-.today-task-status {
-  font-size: 0.95rem;
+  .theme-option-icon { font-size: 1.3rem; }
 }

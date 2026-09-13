@@ -1,7 +1,7 @@
 // PlantPal - Service Worker
 // این فایل مسئول کش کردن فایل‌ها برای استفاده آفلاین است.
 
-const CACHE_NAME = 'plantpal-v1';
+const CACHE_NAME = 'plantpal-v2';
 
 const CACHE_FILES = [
   './',
@@ -12,10 +12,12 @@ const CACHE_FILES = [
   './css/components.css',
   './js/database.js',
   './js/i18n.js',
+  './js/theme.js',
   './js/ui.js',
   './js/plants.js',
   './js/care.js',
   './js/dashboard.js',
+  './js/settings.js',
   './js/app.js',
   './assets/images/default-plant.png',
   './assets/icons/icon-512.png'
