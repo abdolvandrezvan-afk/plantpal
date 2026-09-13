@@ -637,3 +637,57 @@
 
   .theme-option-icon { font-size: 1.3rem; }
 }
+/* ============================================
+   آیکون‌ها
+   ============================================ */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* آیکون در عنوان */
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.app-title .icon {
+  font-size: 1.6rem;
+}
+
+/* آیکون در دکمه تنظیمات */
+.btn-settings .icon {
+  font-size: 1.3rem;
+}
+
+/* آیکون در دکمه بازگشت */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-back .icon {
+  font-size: 1rem;
+}
+
+/* آیکون در دکمه بستن Modal */
+.modal-close .icon {
+  font-size: 1.2rem;
+}

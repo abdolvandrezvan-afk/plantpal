@@ -29,11 +29,14 @@
   <header class="app-header" role="banner">
     <div class="app-header-content">
       <div class="app-header-text">
-        <h1 class="app-title">🌱 PlantPal</h1>
+        <h1 class="app-title">
+          <span class="icon" data-icon="leaf"></span>
+          PlantPal
+        </h1>
         <p class="app-subtitle">گیاه‌یار — همراه شما در مراقبت از گیاهان</p>
       </div>
       <button id="btn-open-settings" class="btn-settings" aria-label="تنظیمات" title="تنظیمات">
-        ⚙️
+        <span class="icon" data-icon="settings"></span>
       </button>
     </div>
   </header>
@@ -68,7 +71,10 @@
 
     <section id="page-add" class="page" aria-label="افزودن گیاه">
       <div class="page-header">
-        <button id="btn-back-from-add" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">← بازگشت</button>
+        <button id="btn-back-from-add" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">
+          <span class="icon" data-icon="arrow-left"></span>
+          بازگشت
+        </button>
         <h2 class="page-title">افزودن گیاه جدید</h2>
       </div>
 
@@ -107,7 +113,10 @@
 
     <section id="page-details" class="page" aria-label="جزئیات گیاه">
       <div class="page-header">
-        <button id="btn-back-from-details" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">← بازگشت</button>
+        <button id="btn-back-from-details" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">
+          <span class="icon" data-icon="arrow-left"></span>
+          بازگشت
+        </button>
         <h2 class="page-title">جزئیات گیاه</h2>
       </div>
 
@@ -153,7 +162,10 @@
 
     <section id="page-settings" class="page" aria-label="تنظیمات">
       <div class="page-header">
-        <button id="btn-back-from-settings" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">← بازگشت</button>
+        <button id="btn-back-from-settings" class="btn btn-back" aria-label="بازگشت به صفحه اصلی">
+          <span class="icon" data-icon="arrow-left"></span>
+          بازگشت
+        </button>
         <h2 class="page-title">⚙️ تنظیمات</h2>
       </div>
 
@@ -219,7 +231,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 id="modal-care-title" class="modal-title">ثبت آبیاری جدید</h3>
-        <button id="btn-close-care-modal" class="modal-close" aria-label="بستن">×</button>
+        <button id="btn-close-care-modal" class="modal-close" aria-label="بستن">
+          <span class="icon" data-icon="x"></span>
+        </button>
       </div>
 
       <form id="form-add-care" class="modal-form">
@@ -249,6 +263,7 @@
   <script src="js/i18n.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/date.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/plants.js"></script>
   <script src="js/care.js"></script>

@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // ۷. راه‌اندازی تنظیمات
     initSettings();
 
+    // ۸. بارگذاری آیکون‌ها
+    await loadAllIcons();
+
     console.log('✓ PlantPal با موفقیت راه‌اندازی شد');
 
   } catch (error) {
