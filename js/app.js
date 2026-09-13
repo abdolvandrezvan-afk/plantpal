@@ -7,23 +7,26 @@ document.addEventListener('DOMContentLoaded', async function() {
   console.log('✓ صفحه بارگذاری شد');
 
   try {
-    // ۱. راه‌اندازی تم (قبل از هر چیز)
+    // ۱. راه‌اندازی تم
     initTheme();
 
-    // ۲. باز کردن پایگاه داده
+    // ۲. راه‌اندازی فرمت تاریخ
+    initDate();
+
+    // ۳. باز کردن پایگاه داده
     await openDatabase();
     console.log('✓ پایگاه داده آماده است');
 
-    // ۳. ترجمه صفحه
+    // ۴. ترجمه صفحه
     translatePage();
 
-    // ۴. نمایش داشبورد
+    // ۵. نمایش داشبورد
     await renderDashboard();
 
-    // ۵. اتصال رویدادها
+    // ۶. اتصال رویدادها
     setupEventListeners();
 
-    // ۶. راه‌اندازی تنظیمات
+    // ۷. راه‌اندازی تنظیمات
     initSettings();
 
     console.log('✓ PlantPal با موفقیت راه‌اندازی شد');
@@ -34,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 function setupEventListeners() {
-  // دکمه تنظیمات در هدر
   const btnOpenSettings = document.getElementById('btn-open-settings');
   if (btnOpenSettings) {
     btnOpenSettings.addEventListener('click', function() {
@@ -42,7 +44,6 @@ function setupEventListeners() {
     });
   }
 
-  // دکمه بازگشت از تنظیمات
   const btnBackFromSettings = document.getElementById('btn-back-from-settings');
   if (btnBackFromSettings) {
     btnBackFromSettings.addEventListener('click', function() {
