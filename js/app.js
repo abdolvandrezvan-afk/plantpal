@@ -7,29 +7,20 @@ document.addEventListener('DOMContentLoaded', async function() {
   console.log('✓ صفحه بارگذاری شد');
 
   try {
-    // ۱. راه‌اندازی تم
     initTheme();
-
-    // ۲. راه‌اندازی فرمت تاریخ
     initDate();
 
-    // ۳. باز کردن پایگاه داده
     await openDatabase();
     console.log('✓ پایگاه داده آماده است');
 
-    // ۴. ترجمه صفحه
     translatePage();
 
-    // ۵. نمایش داشبورد
     await renderDashboard();
 
-    // ۶. اتصال رویدادها
     setupEventListeners();
 
-    // ۷. راه‌اندازی تنظیمات
     initSettings();
 
-    // ۸. بارگذاری آیکون‌ها
     await loadAllIcons();
 
     console.log('✓ PlantPal با موفقیت راه‌اندازی شد');
@@ -129,6 +120,10 @@ function setupEventListeners() {
   if (formAddCare) {
     formAddCare.addEventListener('submit', handleAddCare);
   }
+
+  // راه‌اندازی جستجو و فیلتر
+  if (typeof setupSearch === 'function') setupSearch();
+  if (typeof setupFilters === 'function') setupFilters();
 
   console.log('✓ رویدادها وصل شدند');
 }

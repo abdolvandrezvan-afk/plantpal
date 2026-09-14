@@ -52,6 +52,42 @@
         </button>
       </div>
 
+      <!-- نوار جستجو و فیلتر -->
+      <div class="search-filter-bar">
+        <div class="search-box">
+          <span class="icon search-icon" data-icon="magnifying-glass"></span>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="جستجو در نام گیاه..."
+            aria-label="جستجو در نام گیاه"
+          >
+          <button id="btn-clear-search" class="btn-clear-search" aria-label="پاک کردن جستجو" style="display: none;">
+            <span class="icon" data-icon="x"></span>
+          </button>
+        </div>
+
+        <button id="btn-toggle-filters" class="btn btn-secondary btn-toggle-filters" aria-label="نمایش فیلترها">
+          <span class="icon" data-icon="funnel"></span>
+          فیلترها
+        </button>
+      </div>
+
+      <!-- فیلترها -->
+      <div id="filters-panel" class="filters-panel" style="display: none;">
+        <div class="filter-group">
+          <label class="filter-label">وضعیت سلامت:</label>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter-health="all">همه</button>
+            <button class="filter-btn" data-filter-health="healthy">🙂 سالم</button>
+            <button class="filter-btn" data-filter-health="growing">🌱 در حال رشد</button>
+            <button class="filter-btn" data-filter-health="warning">😐 نیاز به توجه</button>
+            <button class="filter-btn" data-filter-health="sick">☹️ بیمار</button>
+          </div>
+        </div>
+      </div>
+
       <div id="today-tasks" class="today-tasks" style="display: none;" aria-live="polite">
         <h3 class="today-tasks-title">📋 کارهای امروز</h3>
         <div id="today-tasks-list" class="today-tasks-list"></div>
@@ -65,6 +101,11 @@
       <div id="empty-state" class="empty-state" style="display: none;" role="status">
         <p>هنوز گیاهی ثبت نکرده‌اید.</p>
         <p>برای شروع، روی «افزودن گیاه» کلیک کنید.</p>
+      </div>
+
+      <div id="no-results-state" class="empty-state" style="display: none;" role="status">
+        <p>گیاهی با این مشخصات پیدا نشد.</p>
+        <p>فیلترها را تغییر دهید.</p>
       </div>
 
     </section>

@@ -8,7 +8,14 @@
 const WATERING_THRESHOLD_DAYS = 7;
 
 // ============================================
-// بخش ۲: توابع کمکی
+// بخش ۲: متغیرهای جستجو و فیلتر
+// ============================================
+
+let searchQuery = '';
+let filterHealth = 'all';
+
+// ============================================
+// بخش ۳: توابع کمکی
 // ============================================
 
 function getDaysSinceLastWatering(careLogs) {
@@ -38,24 +45,70 @@ function getWateringStatusText(days) {
 }
 
 // ============================================
-// بخش ۳: نمایش داشبورد
+// بخش ۴: فیلتر کردن گیاهان
+// ============================================
+
+function filterPlants(plants) {
+  return plants.filter(function(plant) {
+    // فیلتر جستجو
+    if (searchQuery) {
+      const query = searchQuery.trim().toLowerCase();
+      const name = (plant.name || '').toLowerCase();
+      const type = (plant.type || '').toLowerCase();
+      const location = (plant.location || '').toLowerCase();
+
+      if (!name.includes(query) && !type.includes(query) && !location.includes(query)) {
+        return false;
+      }
+    }
+
+    // فیلتر سلامت
+    if (filterHealth !== 'all') {
+      const health = plant.health || 'healthy';
+      if (health !== filterHealth) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+}
+
+// ============================================
+// بخش ۵: نمایش داشبورد
 // ============================================
 
 async function renderDashboard() {
   try {
-    const plants = await getAllPlants();
+    const allPlants = await getAllPlants();
 
     const todayTasksDiv = document.getElementById('today-tasks');
     const todayTasksList = document.getElementById('today-tasks-list');
     const healthySection = document.getElementById('healthy-plants-section');
     const emptyState = document.getElementById('empty-state');
+    const noResultsState = document.getElementById('no-results-state');
+
+    if (allPlants.length === 0) {
+      if (todayTasksDiv) todayTasksDiv.style.display = 'none';
+      if (healthySection) healthySection.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'block';
+      if (noResultsState) noResultsState.style.display = 'none';
+      return;
+    }
+
+    if (emptyState) emptyState.style.display = 'none';
+
+    // اعمال فیلترها
+    const plants = filterPlants(allPlants);
 
     if (plants.length === 0) {
       if (todayTasksDiv) todayTasksDiv.style.display = 'none';
       if (healthySection) healthySection.style.display = 'none';
-      if (emptyState) emptyState.style.display = 'block';
+      if (noResultsState) noResultsState.style.display = 'block';
       return;
     }
+
+    if (noResultsState) noResultsState.style.display = 'none';
 
     const plantsNeedingWater = [];
     const healthyPlants = [];
@@ -101,9 +154,9 @@ async function renderDashboard() {
       if (healthySection) healthySection.style.display = 'none';
     }
 
-    if (emptyState) emptyState.style.display = 'none';
-
     console.log('✓ داشبورد نمایش داده شد');
+    console.log('  - کل گیاهان:', allPlants.length);
+    console.log('  - پس از فیلتر:', plants.length);
     console.log('  - نیاز به آبیاری:', plantsNeedingWater.length);
     console.log('  - سالم:', healthyPlants.length);
 
@@ -118,7 +171,7 @@ async function renderDashboard() {
 }
 
 // ============================================
-// بخش ۴: ساخت آیتم کار امروز
+// بخش ۶: ساخت آیتم کار امروز
 // ============================================
 
 function createTodayTaskItem(plant, days) {
@@ -159,4 +212,72 @@ function createTodayTaskItem(plant, days) {
   item.appendChild(actions);
 
   return item;
+}
+
+// ============================================
+// بخش ۷: مدیریت جستجو
+// ============================================
+
+function setupSearch() {
+  const searchInput = document.getElementById('search-input');
+  const clearBtn = document.getElementById('btn-clear-search');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      searchQuery = searchInput.value;
+
+      if (clearBtn) {
+        if (searchQuery) {
+          clearBtn.style.display = 'flex';
+        } else {
+          clearBtn.style.display = 'none';
+        }
+      }
+
+      renderDashboard();
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      clearBtn.style.display = 'none';
+      renderDashboard();
+    });
+  }
+
+  console.log('✓ جستجو راه‌اندازی شد');
+}
+
+// ============================================
+// بخش ۸: مدیریت فیلترها
+// ============================================
+
+function setupFilters() {
+  const toggleBtn = document.getElementById('btn-toggle-filters');
+  const filtersPanel = document.getElementById('filters-panel');
+
+  if (toggleBtn && filtersPanel) {
+    toggleBtn.addEventListener('click', function() {
+      const isVisible = filtersPanel.style.display !== 'none';
+      filtersPanel.style.display = isVisible ? 'none' : 'block';
+    });
+  }
+
+  const filterButtons = document.querySelectorAll('[data-filter-health]');
+  filterButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterHealth = btn.getAttribute('data-filter-health');
+
+      filterButtons.forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+
+      renderDashboard();
+    });
+  });
+
+  console.log('✓ فیلترها راه‌اندازی شد');
 }
