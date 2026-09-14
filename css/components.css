@@ -691,3 +691,88 @@
 .modal-close .icon {
   font-size: 1.2rem;
 }
+/* ============================================
+   وضعیت سلامت گیاه
+   ============================================ */
+
+.health-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+}
+
+.health-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.health-option:hover {
+  border-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.health-option.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.health-option .icon {
+  font-size: 1.3rem;
+}
+
+/* رنگ آیکون‌ها بر اساس وضعیت */
+.health-option[data-health="healthy"].active .icon {
+  color: #2e7d32;
+}
+
+.health-option[data-health="growing"].active .icon {
+  color: #1976d2;
+}
+
+.health-option[data-health="warning"].active .icon {
+  color: #fb8c00;
+}
+
+.health-option[data-health="sick"].active .icon {
+  color: #e53935;
+}
+
+/* نمایش وضعیت در صفحه جزئیات */
+.health-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.health-display .icon {
+  font-size: 1.2rem;
+}
+
+.health-display.health-healthy .icon {
+  color: #2e7d32;
+}
+
+.health-display.health-growing .icon {
+  color: #1976d2;
+}
+
+.health-display.health-warning .icon {
+  color: #fb8c00;
+}
+
+.health-display.health-sick .icon {
+  color: #e53935;
+}

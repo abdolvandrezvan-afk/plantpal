@@ -5,20 +5,18 @@
 // بخش ۱: تنظیمات
 // ============================================
 
-// آستانه آبیاری (روز)
 const WATERING_THRESHOLD_DAYS = 7;
 
 // ============================================
 // بخش ۲: توابع کمکی
 // ============================================
 
-// محاسبه تعداد روز از آخرین آبیاری
 function getDaysSinceLastWatering(careLogs) {
   if (!careLogs || careLogs.length === 0) {
-    return null; // هرگز آبیاری نشده
+    return null;
   }
 
-  const lastLog = careLogs[0]; // جدیدترین
+  const lastLog = careLogs[0];
   const lastDate = new Date(lastLog.date);
   const now = new Date();
   const diffMs = now - lastDate;
@@ -26,14 +24,12 @@ function getDaysSinceLastWatering(careLogs) {
   return diffDays;
 }
 
-// بررسی نیاز به آبیاری
 function needsWatering(careLogs) {
   const days = getDaysSinceLastWatering(careLogs);
   if (days === null) return true;
   return days >= WATERING_THRESHOLD_DAYS;
 }
 
-// ساخت متن وضعیت
 function getWateringStatusText(days) {
   if (days === null) return 'هرگز آبیاری نشده';
   if (days === 0) return 'امروز آبیاری شده';
@@ -54,7 +50,6 @@ async function renderDashboard() {
     const healthySection = document.getElementById('healthy-plants-section');
     const emptyState = document.getElementById('empty-state');
 
-    // اگر هیچ گیاهی نیست
     if (plants.length === 0) {
       if (todayTasksDiv) todayTasksDiv.style.display = 'none';
       if (healthySection) healthySection.style.display = 'none';
@@ -62,7 +57,6 @@ async function renderDashboard() {
       return;
     }
 
-    // بررسی هر گیاه
     const plantsNeedingWater = [];
     const healthyPlants = [];
 
@@ -80,7 +74,6 @@ async function renderDashboard() {
       }
     }
 
-    // نمایش کارهای امروز
     if (plantsNeedingWater.length > 0) {
       if (todayTasksDiv) todayTasksDiv.style.display = 'block';
       if (todayTasksList) {
@@ -94,7 +87,6 @@ async function renderDashboard() {
       if (todayTasksDiv) todayTasksDiv.style.display = 'none';
     }
 
-    // نمایش گیاهان سالم
     if (healthyPlants.length > 0) {
       if (healthySection) healthySection.style.display = 'block';
       const plantsList = document.getElementById('plants-list');
@@ -109,19 +101,26 @@ async function renderDashboard() {
       if (healthySection) healthySection.style.display = 'none';
     }
 
-    // پیام خالی
     if (emptyState) emptyState.style.display = 'none';
 
     console.log('✓ داشبورد نمایش داده شد');
     console.log('  - نیاز به آبیاری:', plantsNeedingWater.length);
     console.log('  - سالم:', healthyPlants.length);
 
+    // بارگذاری مجدد آیکون‌ها
+    if (typeof loadAllIcons === 'function') {
+      await loadAllIcons();
+    }
+
   } catch (error) {
     console.error('✗ خطا در نمایش داشبورد:', error);
   }
 }
 
-// ساخت آیتم کار امروز
+// ============================================
+// بخش ۴: ساخت آیتم کار امروز
+// ============================================
+
 function createTodayTaskItem(plant, days) {
   const item = document.createElement('div');
   item.className = 'today-task-item';

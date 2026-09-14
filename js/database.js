@@ -6,11 +6,10 @@
 // ============================================
 
 const DB_NAME = 'PlantPalDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE_PLANTS = 'plants';
 const STORE_CARE_LOGS = 'careLogs';
 
-// کاربر فعلی (برای آینده که چند‌کاربره شود)
 const CURRENT_USER_ID = 'local-user';
 
 let db = null;
@@ -54,6 +53,7 @@ function createStores(database) {
 
     plantsStore.createIndex('userId', 'userId', { unique: false });
     plantsStore.createIndex('name', 'name', { unique: false });
+    plantsStore.createIndex('health', 'health', { unique: false });
 
     console.log('✓ کشوی گیاهان ساخته شد');
   }
@@ -85,6 +85,7 @@ function savePlant(plantData) {
       location: plantData.location || '',
       image: plantData.image || null,
       notes: plantData.notes || '',
+      health: plantData.health || 'healthy',
       userId: CURRENT_USER_ID,
       createdAt: now,
       updatedAt: now
@@ -127,6 +128,7 @@ function updatePlant(plantId, plantData) {
         location: plantData.location !== undefined ? plantData.location : existingPlant.location,
         image: plantData.image !== undefined ? plantData.image : existingPlant.image,
         notes: plantData.notes !== undefined ? plantData.notes : existingPlant.notes,
+        health: plantData.health !== undefined ? plantData.health : existingPlant.health,
         updatedAt: new Date().toISOString()
       };
 
@@ -233,9 +235,7 @@ function getCareLogsByPlantId(plantId) {
 
     request.onsuccess = function(event) {
       let logs = event.target.result;
-
       logs.sort((a, b) => new Date(b.date) - new Date(a.date));
-
       console.log('✓ تعداد فعالیت‌های مراقبتی خوانده شد:', logs.length);
       resolve(logs);
     };

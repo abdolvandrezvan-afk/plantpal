@@ -25,8 +25,7 @@ function initSettings() {
     btn.addEventListener('click', function() {
       const format = btn.getAttribute('data-date-format');
       setDateFormat(format);
-[]
-      // به‌روزرسانی نمایش
+
       if (typeof renderDashboard === 'function') {
         renderDashboard();
       }
@@ -37,4 +36,15 @@ function initSettings() {
   });
 
   console.log('✓ دکمه‌های فرمت تاریخ متصل شدند. تعداد:', dateButtons.length);
+
+  // اتصال دکمه‌های وضعیت سلامت
+  const healthButtons = document.querySelectorAll('[data-health]');
+  healthButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const health = btn.getAttribute('data-health');
+      setSelectedHealth(health);
+    });
+  });
+
+  console.log('✓ دکمه‌های وضعیت سلامت متصل شدند. تعداد:', healthButtons.length);
 }

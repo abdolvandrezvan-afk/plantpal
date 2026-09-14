@@ -95,6 +95,29 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label">وضعیت سلامت</label>
+          <div class="health-options">
+            <button type="button" class="health-option" data-health="healthy">
+              <span class="icon" data-icon="health-healthy"></span>
+              <span>سالم</span>
+            </button>
+            <button type="button" class="health-option" data-health="growing">
+              <span class="icon" data-icon="health-growing"></span>
+              <span>در حال رشد</span>
+            </button>
+            <button type="button" class="health-option" data-health="warning">
+              <span class="icon" data-icon="health-warning"></span>
+              <span>نیاز به توجه</span>
+            </button>
+            <button type="button" class="health-option" data-health="sick">
+              <span class="icon" data-icon="health-sick"></span>
+              <span>بیمار</span>
+            </button>
+          </div>
+          <input type="hidden" id="add-health" value="healthy">
+        </div>
+
+        <div class="form-group">
           <label for="add-image" class="form-label">تصویر گیاه (اختیاری)</label>
           <input type="file" id="add-image" class="form-input" accept="image/*">
         </div>
@@ -137,6 +160,10 @@
           <div class="plant-info-row">
             <span class="plant-info-label">محل نگهداری:</span>
             <span id="details-location" class="plant-info-value">—</span>
+          </div>
+          <div class="plant-info-row">
+            <span class="plant-info-label">وضعیت سلامت:</span>
+            <span id="details-health" class="plant-info-value">—</span>
           </div>
           <div class="plant-info-row">
             <span class="plant-info-label">یادداشت:</span>

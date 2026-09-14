@@ -9,6 +9,7 @@ let currentPlantId = null;
 let currentPlantImage = null;
 let isEditMode = false;
 let editingPlantId = null;
+let selectedHealth = 'healthy';
 
 // ============================================
 // بخش ۲: نمایش فهرست گیاهان
@@ -67,6 +68,19 @@ function createPlantCard(plant) {
   content.appendChild(name);
   content.appendChild(location);
 
+  // نشانگر وضعیت سلامت
+  const health = plant.health || 'healthy';
+  const healthIcon = getHealthIcon(health);
+  const healthLabel = getHealthLabel(health);
+
+  const healthBadge = document.createElement('div');
+  healthBadge.className = 'plant-card-health health-' + health;
+  healthBadge.innerHTML =
+    '<span class="icon" data-icon="' + healthIcon + '"></span>' +
+    '<span class="health-label">' + healthLabel + '</span>';
+
+  content.appendChild(healthBadge);
+
   card.appendChild(image);
   card.appendChild(content);
 
@@ -97,6 +111,19 @@ async function openPlantDetails(plantId) {
     document.getElementById('details-location').textContent = plant.location || '—';
     document.getElementById('details-notes').textContent = plant.notes || '—';
 
+    // نمایش وضعیت سلامت
+    const healthDisplay = document.getElementById('details-health');
+    if (healthDisplay) {
+      const health = plant.health || 'healthy';
+      const healthLabel = getHealthLabel(health);
+      const healthIcon = getHealthIcon(health);
+      healthDisplay.innerHTML =
+        '<span class="health-display health-' + health + '">' +
+        '<span class="icon" data-icon="' + healthIcon + '"></span>' +
+        '<span>' + healthLabel + '</span>' +
+        '</span>';
+    }
+
     const detailsImage = document.getElementById('details-image');
     if (plant.image) {
       detailsImage.src = plant.image;
@@ -107,6 +134,11 @@ async function openPlantDetails(plantId) {
     showDetailsPage();
 
     await renderCareLogs(plantId);
+
+    // بارگذاری مجدد آیکون‌ها
+    if (typeof loadAllIcons === 'function') {
+      await loadAllIcons();
+    }
 
     console.log('✓ جزئیات گیاه نمایش داده شد:', plant.name);
   } catch (error) {
@@ -144,7 +176,8 @@ async function handleAddPlant(event) {
       type: type,
       location: location,
       notes: notes,
-      image: imageData
+      image: imageData,
+      health: selectedHealth
     };
 
     await savePlant(plantData);
@@ -225,7 +258,8 @@ async function handleUpdatePlant(event) {
       name: name,
       type: type,
       location: location,
-      notes: notes
+      notes: notes,
+      health: selectedHealth
     };
 
     if (imageData !== undefined) {
